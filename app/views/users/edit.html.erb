@@ -1,3 +1,127 @@
+<%= stylesheet_link_tag "forms" %>
+
+<link>
+
 <h1>
-  Edit <%= @user.first_name %> <%= @user.last_name %>
+  Edit <%= @user.first_name %> <%= @user.last_name %>:
 </h1>
+
+<%= form_for(@user, html: { class: "container" }) do |f| %>
+  <div
+    class="
+      field
+      input-group
+      mb-3
+  ">
+    <%=
+      f.label :first_name,
+      class:"
+        input-group-text
+        bg-secondary
+        text-light
+        flex-grow-1
+        field-label
+    "%>
+
+    <%=
+      f.text_field :first_name,
+      autocomplete: "first name",
+      class:"form-control"
+    %>
+  </div>
+
+  <div
+    class="
+      field
+      input-group
+      mb-3
+  ">
+    <%=
+      f.label :last_name,
+      class:"
+        input-group-text
+        bg-secondary
+        text-light
+        flex-grow-1
+        field-label
+    "%>
+
+    <%=
+      f.text_field :last_name,
+      autocomplete: "last name",
+      class:"form-control"
+    %>
+  </div>
+
+  <div
+    class="
+      field
+      input-group
+      mb-3
+  ">
+    <%=
+      f.label :email,
+      class:"
+        input-group-text
+        bg-secondary
+        text-light
+        flex-grow-1
+        field-label
+    "%>
+
+    <%=
+      f.email_field :email,
+      autocomplete: "email",
+      class:"form-control"
+    %>
+  </div>
+
+  <div
+    class="
+      field
+      input-group
+      mb-3
+  ">
+    <%=
+      f.label :role,
+      class:"
+        input-group-text
+        bg-secondary
+        text-light
+        flex-grow-1
+        field-label
+    "%>
+
+    <%=
+      f.select(
+        :role,
+        [
+          ["USER", "USER"],
+          ["ADMIN", "ADMIN"],
+        ],
+        { selected: @user.role },
+        { class: "form-select" }
+    )%>
+  </div>
+
+  <div class="
+    actions d-flex
+    ustify-content-end
+  ">
+    <%=
+      f.submit "Update",
+      class:"
+        btn
+        btn-dark
+        mx-2
+    "%>
+
+    <%=
+      link_to "Back to users",
+      admin_users_path,
+      class:"
+        btn
+        btn-outline-secondary
+    "%>
+  </div>
+<% end %>
