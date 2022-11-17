@@ -4,7 +4,7 @@ class AdminController < ApplicationController
   def grant_admins_only_acess
     if current_user.role != 'ADMIN'
       redirect_to root_path,
-      notice: 'Admin rules required to perform this action'
+      alert: 'Admin rules required to perform this action'
     end
   end
 
