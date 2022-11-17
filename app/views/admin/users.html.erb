@@ -7,6 +7,7 @@
       <th scope="col">Username</th>
       <th scope="col">Role</th>
       <th scope="col">Email</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   
@@ -28,6 +29,18 @@
 
         <td>
           <%= user.email %>
+        </td>
+
+        <td>
+          <%=
+            link_to 'Edit',
+            edit_user_path(user),
+            class:"
+              btn
+              btn-outline-secondary
+              btn-sm
+              d-block
+          "%>
         </td>
       </tr>
     <% end %>
