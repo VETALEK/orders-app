@@ -16,10 +16,10 @@
   <body>
     <%= render 'layouts/header' %>
 
-    <%= render 'layouts/alerts' %>
-
     <div class="container">
       <%= yield %>
+
+      <%= render 'layouts/alerts' %>
     </div>
 
     <%# Bootstrap js %>
