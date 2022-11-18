@@ -23,17 +23,17 @@ class ItemsController < ApplicationController
 
   # POST /items or /items.json
   def create
+    redirect_to admin_items_path
+
+    if current_user.role != 'ADMIN'
+      return
+    end
+
     @item = Item.new(item_params)
 
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to item_url(@item), notice: "Item was successfully created." }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
+    @item.save
+
+    flash[:notice] = @item.name + ' created'
   end
 
   # PATCH/PUT /items/1 or /items/1.json
