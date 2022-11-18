@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  delete 'items/:id/delete' => 'items#destroy', as: 'items_delete'
-  get '/items/:id/delete' => 'items#destroy'
+  delete 'admin/items/:id/delete' => 'items#destroy', as: 'admin_items_delete'
+  
+  get 'admin/items/:id/delete' => 'items#destroy'
 end
