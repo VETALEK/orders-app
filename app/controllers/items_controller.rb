@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
     end
 
     def check_admin_rights
-      @is_user_admin = current_user.role == 'ADMIN'
+      @is_user_admin = user_signed_in? && current_user.role == 'ADMIN'
     end
 
     # Only allow a list of trusted parameters through.
