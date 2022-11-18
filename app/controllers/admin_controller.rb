@@ -11,4 +11,8 @@ class AdminController < ApplicationController
   def users
     @users = User.all;
   end
+
+  def items
+    @items = Item.all;
+  end
 end

@@ -25,6 +25,14 @@
         mb-lg-0
         flex-row
     ">
+        <li class="nav-item px-3">
+          <%=
+            link_to 'Items',
+            items_path,
+            class:"nav-link"
+          %>
+        </li>
+
         <% if user_signed_in? %>
           <li class="nav-item px-3">
             <%=
