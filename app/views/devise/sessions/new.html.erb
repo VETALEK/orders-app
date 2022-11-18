@@ -62,35 +62,22 @@
   <div class="
     actions
     d-flex
-    justify-content-between
+    justify-content-end
   ">
     <%=
-      link_to "Forgot your password?",
-      new_password_path(resource_name),
+      f.submit "Sign in",
+      class:"
+        btn
+        btn-dark
+        mx-2
+    "%>
+
+    <%=
+      link_to "Sign up",
+      new_registration_path(resource_name),
       class:"
         btn
         btn-outline-secondary
     "%>
-    
-    <div class="
-      d-flex
-      justify-content-end
-    ">
-      <%=
-        f.submit "Sign in",
-        class:"
-          btn
-          btn-dark
-          mx-2
-      "%>
-
-      <%=
-        link_to "Sign up",
-        new_registration_path(resource_name),
-        class:"
-          btn
-          btn-outline-secondary
-      "%>
-    </div>
   </div>
 <% end %>
