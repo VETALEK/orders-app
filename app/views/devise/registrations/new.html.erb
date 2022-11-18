@@ -189,6 +189,12 @@
         mx-2
     "%>
 
-    <%= render "devise/shared/links" %>
+    <%=
+      link_to "Sign in",
+      new_session_path(resource_name),
+      class:"
+        btn
+        btn-outline-secondary
+    "%>
   </div>
 <% end %>
