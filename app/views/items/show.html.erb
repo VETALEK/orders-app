@@ -1,10 +1,38 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @item %>
+<div class="jumbotron">
+  <h1 class="display-4">
+    <%= @item.name %>
+  </h1>
 
-<div>
-  <%= link_to "Edit this item", edit_item_path(@item) %> |
-  <%= link_to "Back to items", items_path %>
+  <p class="lead">
+    <%= @item.description %>
+  </p>
+  
+  <hr class="my-4">
 
-  <%= link_to "Destroy this item", items_delete_path(@item), method: :delete %>
+  <p>
+    Cost: $<%= @item.price %>
+  </p>
+  
+  <p class="lead d-flex justify-content-end">
+    <%=
+      link_to "Back to items",
+      items_path,
+      class:"
+        btn
+        btn-outline-secondary
+        btn-lg
+        mx-3
+    "%>
+
+    <%=
+      link_to "Add to cart",
+      items_path,
+      class:"
+        btn
+        btn-dark
+        btn-lg
+    "%>
+  </p>
 </div>
