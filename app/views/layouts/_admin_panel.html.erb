@@ -30,6 +30,14 @@
 
       <li class="nav-item px-3">
         <%=
+          link_to 'Add item',
+          new_item_path,
+          class:"nav-link"
+        %>
+      </li>
+
+      <li class="nav-item px-3">
+        <%=
           link_to 'Users',
           admin_users_path,
           class:"nav-link"
