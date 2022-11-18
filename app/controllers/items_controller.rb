@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[ show edit update ]
-  
-  before_action :set_full_acess_item, only: %i[ show edit update destroy ]
+  before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :check_admin_rights
 
   # GET /items or /items.json
   def index
@@ -25,7 +24,7 @@ class ItemsController < ApplicationController
   def create
     redirect_to admin_items_path
 
-    if current_user.role != 'ADMIN'
+    if !@is_user_admin
       return
     end
 
@@ -53,15 +52,15 @@ class ItemsController < ApplicationController
   def destroy
     redirect_to :admin_items
 
-    if  @full_acess_item.nil?
+    if !@is_user_admin
       return
     end
 
-    @full_acess_item.destroy
+    @item.destroy
 
     params[:id] = nil
 
-    flash[:notice] = @full_acess_item.name + " deleted"
+    flash[:notice] = @item.name + " deleted"
   end
 
   private
@@ -70,10 +69,8 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:id])
     end
 
-    def set_full_acess_item
-      if current_user.role == 'ADMIN'
-        @full_acess_item = Item.find(params[:id])
-      end
+    def check_admin_rights
+      @is_user_admin = current_user.role == 'ADMIN'
     end
 
     # Only allow a list of trusted parameters through.
