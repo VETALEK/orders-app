@@ -1,14 +1,58 @@
-<p style="color: green"><%= notice %></p>
+<%= stylesheet_link_tag "items" %>
 
 <h1>Items</h1>
 
-<div id="items">
+<section class="d-flex flex-wrap items-list">
   <% @items.each do |item| %>
-    <%= render item %>
-    <p>
-      <%= link_to "Show this item", item %>
-    </p>
-  <% end %>
-</div>
+    <div
+      class="
+      card
+      bg-light
+      item-card
+    ">
+      <h5
+        class="
+          card-header
+          card-title
+          bg-secondary
+      ">
+        <%= item.name %>
+      </h5>
 
-<%= link_to "New item", new_item_path %>
+      <div class="card-body">
+        <h6
+          class="
+            card-subtitle
+            text-muted
+            mb-2
+        ">
+          Cost: <%= item.price %>$
+        </h6>
+
+        <p class="card-text">
+          <%= item.description %>
+        </p>
+        
+        <div class="d-flex justify-content-end">
+          <%=
+            link_to 'View more',
+            item,
+            class:"
+              card-link
+              btn
+              btn-outline-secondary
+          "%>
+
+          <%=
+            link_to 'Add to cart',
+            item,
+            class:"
+              card-link
+              btn
+              btn-dark
+          "%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>
